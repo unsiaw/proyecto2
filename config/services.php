@@ -50,4 +50,16 @@ return [
         'redirect' => 'http://localhost:8000/callback/twitter',
     ],
 
+
+    'github' => [
+        'client_id' => '246ea443d91020c21b93',
+        'client_secret' => 'afcdecb224abe072236cd93e18ad2f870867f536',
+        'redirect' => 'http://localhost:8000/callback/github',
+    ],
+
+    'google' => [
+        'client_id' => '66148474000-79tqb6iud59pigt80h3lhjt6pdel70as.apps.googleusercontent.com',
+        'client_secret' => 'HajVGxmN6g3RT5XWxPVrb7bM',
+        'redirect' => 'http://localhost:8000/callback/google',
+    ],
 ];
