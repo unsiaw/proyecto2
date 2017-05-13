@@ -8,10 +8,15 @@
                 <div class="panel-heading">Dashboard</div>
 
                 <div class="panel-body">
-                    You are logged in!
+                    @if (Auth::check())
+                        Welcome {{ Auth::user()->name }}
+                    @else
+                        Welcome! Please, <a href="{{ url('/login') }}">Login</a> or <a href="{{ url('/register') }}">Register</a>
+                    @endif
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+
