@@ -9,7 +9,12 @@
 
                 <div class="panel-body">
                     @if (Auth::check())
-                        Welcome {{ Auth::user()->name }}
+                        Welcome {{ Auth::user()->name }} - {{ Auth::user()->isAdmin() }}
+                        @if (Auth::user()->isAdmin())
+                            Sos administrador.
+                        @else
+                            Sos usuario normal.
+                        @endif 
                     @else
                         Welcome! Please, <a href="{{ url('/login') }}">Login</a> or <a href="{{ url('/register') }}">Register</a>
                     @endif

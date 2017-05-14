@@ -13,7 +13,11 @@
 
 Route::get('/', function () {
     return view('home');
-});
+})->name('inicio');
+
+Route::get('/readme', function () {
+    return view('readme');
+})->name('readme');
 
 Auth::routes();
 
