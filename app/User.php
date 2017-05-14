@@ -26,4 +26,13 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * Funcion para saber si el usuario conectado es administrador o no
+     *
+     * @return 1 si es admin.
+     */
+    public function isAdmin() {
+        return ($this->rango == 'admin');
+    }
 }
