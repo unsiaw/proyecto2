@@ -40,9 +40,15 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/js/bootstrap.min.js"></script>
-    <script src="/js/funciones.js"></script>
-
-        @yield('scripts')
+    <script src="js/utils.js"></script>
+    <script src="js/vista.js"></script>
+    <script src="js/controlador.js"></script>
+    <script src="js/modelo.js"></script>
+    <script>
+        $( document ).ready(function() {
+            cargarTheme();
+        });
+    </script>
 
 </body>
 </html>

@@ -10,9 +10,10 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-adjust" aria-hidden="true"></span> Temas <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#" onclick="cambiarTheme('css/bootstrap-theme.min.css')">Bootstrap</a></li>
-                        <li><a href="#" onclick="cambiarTheme('css/flatly-theme.min.css')">Flatly</a></li>
-                        <li><a href="#" onclick="cambiarTheme('css/simplex-theme.min.css')">Simplex</a></li>
+                            <li><a href="#" onclick="cambiarTheme('css/bootstrap-theme.min.css')">Bootstrap</a></li>
+                            <li><a href="#" onclick="cambiarTheme('css/cyborg-theme.min.css')">Cyborg</a></li>
+                            <li><a href="#" onclick="cambiarTheme('css/flow-theme.min.css')">Flow</a></li>
+                            <li><a href="#" onclick="cambiarTheme('css/simplex-theme.css')">Simplex</a></li>
                     </ul>
                 </li>
             </ul>
