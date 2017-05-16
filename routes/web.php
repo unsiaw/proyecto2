@@ -22,8 +22,11 @@ Route::get('/readme', function () {
 Route::get('/chasis/json','ChasisController@json');
 Route::get('/tazas/json','TazasController@json');
 
-Route::get('/tazas/new','TazasController@index')->name('upload.taza');
-Route::post('/tazas/new','TazasController@store');
+Route::get('/tazas/create','TazasController@index')->name('upload.taza');
+Route::post('/tazas/create','TazasController@store');
+
+Route::get('/chasis/create','ChasisController@index')->name('upload.chasis');
+Route::post('/chasis/create','ChasisController@store');
 
 
 Auth::routes();

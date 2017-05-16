@@ -45,7 +45,7 @@ class TazasController extends Controller
             $extension = $request->fondo->extension();
             $path = $request->fondo->store('images');
             $taza = new Tazas;
-            $taza->nombre = $request->fondo->getClientOriginalName();
+            $taza->nombre = $request->nombre;
             $taza->taza = $path;
             $taza->save();
             return 'todo ok';
