@@ -19,6 +19,13 @@ Route::get('/readme', function () {
     return view('readme');
 })->name('readme');
 
+Route::get('/chasis/json','ChasisController@json');
+Route::get('/tazas/json','TazasController@json');
+
+Route::get('/tazas/new','TazasController@index')->name('upload.taza');
+Route::post('/tazas/new','TazasController@store');
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
