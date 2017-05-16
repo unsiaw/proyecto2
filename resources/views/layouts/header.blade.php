@@ -27,7 +27,7 @@
                                     </a>
                                 <ul class="dropdown-menu" role="menu"> 
                                     <li><a href="autos/all">Ver autos</a></li>
-                                    <li><a href="autos/new">Crear auto</a></li>
+                                    <li><a href="autos/create">Crear auto</a></li>
                                 </ul>
                             </li>
                             @if (!Auth::guest())
@@ -38,8 +38,8 @@
                                     </a>
 
                                     <ul class="dropdown-menu" role="menu">
-                                        <li><a href="chasis/new">Cargar chasis</a></li>
-                                        <li><a href="taza/new">Cargar taza</a></li>
+                                        <li><a href="{{ route('upload.chasis') }}">Cargar chasis</a></li>
+                                        <li><a href="{{ route('upload.taza') }}">Cargar taza</a></li>
                                     </ul>
                                 </li>
                                 @endif
