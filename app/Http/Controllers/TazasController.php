@@ -19,7 +19,7 @@ class TazasController extends Controller
      */
     public function index()
     {
-        //
+        return view('tazas.index');
     }
 
     /**
@@ -40,7 +40,17 @@ class TazasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if ($request->hasFile('fondo') && $request->fondo->isValid())
+        {
+            $extension = $request->fondo->extension();
+            $path = $request->fondo->store('images');
+            $taza = new Tazas;
+            $taza->nombre = $request->fondo->getClientOriginalName();
+            $taza->taza = $path;
+            $taza->save();
+            return 'todo ok';
+        }
+        return 'todo mal';
     }
 
     /**
