@@ -19,7 +19,7 @@ class ChasisController extends Controller
      */
     public function index()
     {
-        return view('chasis.index');
+        return view('chasis.form');
     }
 
     /**
@@ -40,25 +40,32 @@ class ChasisController extends Controller
      */
     public function store(Request $request)
     {
-        $condicion = ($request->hasFile('fondo')) && ($request->fondo->isValid()) && ($request->hasFile('chasis')) && ($request->chasis->isValid());
-        if ($condicion)
-        {
-            //$extension = $request->fondo->extension();
-            $pathFondo = $request->fondo->store('images');
-            $pathChasis = $request->chasis->store('images');
-            $chasis = new Chasis;
-            $chasis->nombre = $request->nombre;
-            $chasis->fondo = $pathFondo;
-            $chasis->chasis = $pathChasis;
-            $chasis->rueda1x = $request->rueda1x;
-            $chasis->rueda1y = $request->rueda1y;
-            $chasis->rueda2x = $request->rueda2x;
-            $chasis->rueda2y = $request->rueda2y;
-            $chasis->ruedasize = $request->ruedasize;
-            $chasis->save();
-            return 'todo ok';
-        }
-        return 'todo mal';
+        $this->validate($request, [
+            'nombre' => 'required|max:80',
+            'fondo' => 'required|file|image|mimes:png',
+            'chasis' => 'required|file|image|mimes:png',
+            'rueda1x' => 'required|integer',
+            'rueda1y' => 'required|integer',
+            'rueda2x' => 'required|integer',
+            'rueda2y' => 'required|integer',
+            'ruedasize' => 'required|integer',
+        ]);
+
+        $pathFondo = $request->fondo->store('images');
+        $pathChasis = $request->chasis->store('images');
+        $chasis = new Chasis;
+        $chasis->nombre = $request->nombre;
+        $chasis->fondo = $pathFondo;
+        $chasis->chasis = $pathChasis;
+        $chasis->rueda1x = $request->rueda1x;
+        $chasis->rueda1y = $request->rueda1y;
+        $chasis->rueda2x = $request->rueda2x;
+        $chasis->rueda2y = $request->rueda2y;
+        $chasis->ruedasize = $request->ruedasize;
+        $chasis->save();
+
+        return view('chasis.form');
+
     }
 
     /**

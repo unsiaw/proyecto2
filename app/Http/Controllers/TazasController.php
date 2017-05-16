@@ -19,7 +19,7 @@ class TazasController extends Controller
      */
     public function index()
     {
-        return view('tazas.index');
+        return view('tazas.form');
     }
 
     /**
@@ -40,17 +40,18 @@ class TazasController extends Controller
      */
     public function store(Request $request)
     {
-        if ($request->hasFile('fondo') && $request->fondo->isValid())
-        {
-            $extension = $request->fondo->extension();
-            $path = $request->fondo->store('images');
-            $taza = new Tazas;
-            $taza->nombre = $request->nombre;
-            $taza->taza = $path;
-            $taza->save();
-            return 'todo ok';
-        }
-        return 'todo mal';
+        $this->validate($request, [
+            'nombre' => 'required|max:80',
+            'fondo' => 'required|file|image|mimes:png'
+        ]);
+
+        $pathFondo = $request->fondo->store('images');
+        $taza = new Tazas;
+        $taza->nombre = $request->nombre;
+        $taza->taza = $pathFondo;
+        $taza->save();
+
+        return view('tazas.form');
     }
 
     /**
