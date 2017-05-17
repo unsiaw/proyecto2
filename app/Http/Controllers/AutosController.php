@@ -18,6 +18,11 @@ class AutosController extends Controller
 
         return view('autos.index',compact('autos'));
     }
+    
+    public function crearAuto()
+    {
+        return view('autos.form');
+    }
 
     /**
      * Show the form for creating a new resource.
