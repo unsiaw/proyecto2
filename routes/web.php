@@ -28,6 +28,10 @@ Route::post('/tazas/create','TazasController@store');
 Route::get('/chasis/create','ChasisController@index')->name('upload.chasis');
 Route::post('/chasis/create','ChasisController@store');
 
+Route::get('/autos/all','AutosController@index')->name('autos.todos');
+Route::get('/autos/{auto}','AutosController@show')->name('autos.uno');
+Route::get('/autos/create','AutosController@crearAuto')->name('upload.auto');
+
 
 Auth::routes();
 
