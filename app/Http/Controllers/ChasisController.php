@@ -7,6 +7,11 @@ use Illuminate\Http\Request;
 
 class ChasisController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('json');
+    }
+
     public function json()
     {
         return Chasis::all();

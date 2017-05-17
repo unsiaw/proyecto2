@@ -19,8 +19,8 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                            <li><a href="/">Inicio</a></li>
-                            <li><a href="readme">Créditos</a></li>
+                            <li><a href="{{ route('inicio') }}">Inicio</a></li>
+                            <li><a href="{{ route('readme') }}">Créditos</a></li>
                              <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                         Modelos <span class="caret"></span>
