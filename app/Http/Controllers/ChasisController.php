@@ -42,8 +42,8 @@ class ChasisController extends Controller
     {
         $this->validate($request, [
             'nombre' => 'required|max:80',
-            'fondo' => 'required|file|image|mimes:png',
-            'chasis' => 'required|file|image|mimes:png',
+            'fondo' => 'required|file|image|mimes:png|max:2048',
+            'chasis' => 'required|file|image|mimes:png|max:2048',
             'rueda1x' => 'required|integer',
             'rueda1y' => 'required|integer',
             'rueda2x' => 'required|integer',
