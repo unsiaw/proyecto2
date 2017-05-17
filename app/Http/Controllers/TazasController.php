@@ -7,6 +7,10 @@ use Illuminate\Http\Request;
 
 class TazasController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->except('json');
+    }
 
     public function json()
     {
