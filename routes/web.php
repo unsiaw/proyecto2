@@ -32,7 +32,6 @@ Route::get('/autos/all','AutosController@index')->name('autos.todos');
 Route::get('/autos/{auto}','AutosController@show')->name('autos.uno');
 Route::get('/autos/create','AutosController@crearAuto')->name('upload.auto');
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
