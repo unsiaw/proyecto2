@@ -10,4 +10,9 @@ class Chasis extends Model
     protected $fillable = [
         'nombre', 'fondo', 'chasis', 'rueda1x', 'rueda1y', 'rueda2x', 'rueda2y', 'ruedasize'
     ];
+
+    public function autos()
+    {
+        return $this->hasMany(Autos::class);
+    }
 }
