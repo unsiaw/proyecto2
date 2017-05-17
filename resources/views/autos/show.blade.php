@@ -1,0 +1,2 @@
+{{ $auto->id }}
+{{ $auto->color }}

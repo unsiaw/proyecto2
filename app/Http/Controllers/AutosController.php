@@ -14,7 +14,9 @@ class AutosController extends Controller
      */
     public function index()
     {
-        //
+        $autos = Autos::all();
+
+        return view('autos.index',compact('autos'));
     }
 
     /**
@@ -41,12 +43,12 @@ class AutosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Autos  $autos
+     * @param  \App\Autos  $auto
      * @return \Illuminate\Http\Response
      */
-    public function show(Autos $autos)
+    public function show(Autos $auto)
     {
-        //
+        return view('autos.show',compact('auto'));
     }
 
     /**

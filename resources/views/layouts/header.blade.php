@@ -26,8 +26,8 @@
                                         Modelos <span class="caret"></span>
                                     </a>
                                 <ul class="dropdown-menu" role="menu"> 
-                                    <li><a href="autos/all">Ver autos</a></li>
-                                    <li><a href="autos/create">Crear auto</a></li>
+                                    <li><a href="{{ route('autos.todos') }}">Ver autos</a></li>
+                                    <li><a href="{{ route('upload.auto') }}">Crear auto</a></li>
                                 </ul>
                             </li>
                             @if (!Auth::guest())
