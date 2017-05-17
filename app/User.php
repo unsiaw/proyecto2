@@ -35,4 +35,9 @@ class User extends Authenticatable
     public function isAdmin() {
         return ($this->rango == 'admin');
     }
+
+    public function autos()
+    {
+        return $this->hasMany(Autos::class);
+    }
 }

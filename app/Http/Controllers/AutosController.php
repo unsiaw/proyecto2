@@ -2,16 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Tazas;
+use App\Autos;
 use Illuminate\Http\Request;
 
-class TazasController extends Controller
+class AutosController extends Controller
 {
-
-    public function json()
-    {
-        return Tazas::all();
-    }
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +14,7 @@ class TazasController extends Controller
      */
     public function index()
     {
-        return view('tazas.form');
+        //
     }
 
     /**
@@ -40,27 +35,16 @@ class TazasController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'nombre' => 'required|max:80',
-            'fondo' => 'required|file|image|mimes:png|max:2048'
-        ]);
-
-        $pathFondo = $request->fondo->store('images');
-        $taza = new Tazas;
-        $taza->nombre = $request->nombre;
-        $taza->taza = $pathFondo;
-        $taza->save();
-
-        return view('tazas.form');
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Tazas  $tazas
+     * @param  \App\Autos  $autos
      * @return \Illuminate\Http\Response
      */
-    public function show(Tazas $tazas)
+    public function show(Autos $autos)
     {
         //
     }
@@ -68,10 +52,10 @@ class TazasController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Tazas  $tazas
+     * @param  \App\Autos  $autos
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tazas $tazas)
+    public function edit(Autos $autos)
     {
         //
     }
@@ -80,10 +64,10 @@ class TazasController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tazas  $tazas
+     * @param  \App\Autos  $autos
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Tazas $tazas)
+    public function update(Request $request, Autos $autos)
     {
         //
     }
@@ -91,10 +75,10 @@ class TazasController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Tazas  $tazas
+     * @param  \App\Autos  $autos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tazas $tazas)
+    public function destroy(Autos $autos)
     {
         //
     }
