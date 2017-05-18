@@ -19,6 +19,11 @@ Route::get('/readme', function () {
     return view('readme');
 })->name('readme');
 
+Route::get('/algo', function () {
+    return view('mivista');
+})->name('mirutita');
+
+
 Route::get('/chasis/json','ChasisController@json');
 Route::get('/tazas/json','TazasController@json');
 
