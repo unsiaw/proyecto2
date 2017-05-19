@@ -21,6 +21,11 @@ class TazasController extends Controller
     {
         return Tazas::find($id);
     }
+
+    public function all()
+    {
+        // TODO Devolver la lista de todos los chasis y mostrarlos en una tabla
+    }
     /**
      * Display a listing of the resource.
      *
