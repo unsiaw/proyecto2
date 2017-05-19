@@ -16,7 +16,7 @@ class AutosAdminController extends Controller
     {
         $autos = Autos::all();
 
-        return view('autos.index',compact('autos'));
+        return view('autos.admin.index',compact('autos'));
     }
     
      /**

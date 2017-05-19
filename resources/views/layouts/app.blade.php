@@ -25,30 +25,35 @@
             'csrfToken' => csrf_token(),
         ]) !!};
     </script>
+
+    <!-- Importación de los JS -->
+    <!-- JSColor -->
+    <script src="{{ URL::to('js/jscolor.min.js') }}"></script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- FabricJS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/1.7.9/fabric.min.js"></script>
 </head>
 <body>
     <div id="app">
         @include('layouts.header')
-
         @yield('content')
     </div>
 
-
         @include('layouts.footer')
     <!-- Importación de los JS -->
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="/js/bootstrap.min.js"></script>
-    <script src="js/utils.js"></script>
-    <script src="js/vista.js"></script>
-    <script src="js/controlador.js"></script>
-    <script src="js/modelo.js"></script>
+    <script src="{{ URL::to('js/bootstrap.min.js') }}"></script>
+    <script src="{{ URL::to('js/utils.js') }}"></script>
+    <script src="{{ URL::to('js/vista.js') }}"></script>
+    <script src="{{ URL::to('js/controlador.js') }}"></script>
+    <script src="{{ URL::to('js/modelo.js') }}"></script>
     <script>
         $( document ).ready(function() {
             cargarTheme();
         });
     </script>
+    @yield('scripts')
 
 </body>
 </html>

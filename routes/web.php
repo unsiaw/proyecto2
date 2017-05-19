@@ -19,10 +19,10 @@ Route::get('/readme', function () {
     return view('readme');
 })->name('global.readme');
 
-Route::get('/chasis/json','ChasisController@json');
-Route::get('/chasis/json/{id}','ChasisController@jsonId');
-Route::get('/tazas/json','TazasController@json');
-Route::get('/tazas/json/{id}','TazasController@jsonId');
+Route::get('/chasis/json','ChasisController@json')->name('chasis.json');
+Route::get('/chasis/json/{id}','ChasisController@jsonId')->name('chasis.json.id');
+Route::get('/tazas/json','TazasController@json')->name('tazas.json');
+Route::get('/tazas/json/{id}','TazasController@jsonId')->name('tazas.json.id');
 
 Route::get('/admin/tazas/create','TazasController@index')->name('tazas.admin.create');
 Route::post('/admin/tazas/create','TazasController@store');
