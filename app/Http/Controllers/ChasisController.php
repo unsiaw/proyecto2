@@ -9,7 +9,7 @@ class ChasisController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('json');
+        $this->middleware(['auth', 'admin'])->except(['json', 'jsonId']);
     }
 
     public function json()
@@ -17,6 +17,10 @@ class ChasisController extends Controller
         return Chasis::all();
     }
 
+    public function jsonId($id)
+    {
+        return Chasis::find($id);
+    }
     /**
      * Display a listing of the resource.
      *

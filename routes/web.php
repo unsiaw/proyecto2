@@ -20,7 +20,9 @@ Route::get('/readme', function () {
 })->name('readme');
 
 Route::get('/chasis/json','ChasisController@json');
+Route::get('/chasis/json/{id}','ChasisController@jsonId');
 Route::get('/tazas/json','TazasController@json');
+Route::get('/tazas/json/{id}','TazasController@jsonId');
 
 Route::get('/tazas/create','TazasController@index')->name('upload.taza');
 Route::post('/tazas/create','TazasController@store');
@@ -30,7 +32,8 @@ Route::post('/chasis/create','ChasisController@store');
 
 Route::get('/autos/create','AutosController@crearAuto')->name('upload.auto');
 Route::post('/autos/create','AutosController@store');
-Route::get('/autos/all','AutosController@index')->name('autos.todos');
+Route::get('/autos/all','AutosController@index')->name('autos.todos')->middleware('admin');
+
 // Dejar esta ruta para lo ultimo. EL ORDEN DE LAS RUTAS IMPORTA!
 Route::get('/autos/{auto}','AutosController@show')->name('autos.uno');
 

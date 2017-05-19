@@ -9,12 +9,17 @@ class TazasController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('json');
+        $this->middleware(['auth', 'admin'])->except(['json', 'jsonId']);
     }
 
     public function json()
     {
         return Tazas::all();
+    }
+
+    public function jsonId($id)
+    {
+        return Tazas::find($id);
     }
     /**
      * Display a listing of the resource.
