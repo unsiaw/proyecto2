@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Cargar un nuevo chasis</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('upload.chasis') }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('chasis.admin.create') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">

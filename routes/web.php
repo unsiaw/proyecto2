@@ -13,26 +13,32 @@
 
 Route::get('/', function () {
     return view('home');
-})->name('inicio');
+})->name('global.inicio');
 
 Route::get('/readme', function () {
     return view('readme');
-})->name('readme');
+})->name('global.readme');
 
 Route::get('/chasis/json','ChasisController@json');
+Route::get('/chasis/json/{id}','ChasisController@jsonId');
 Route::get('/tazas/json','TazasController@json');
+Route::get('/tazas/json/{id}','TazasController@jsonId');
 
-Route::get('/tazas/create','TazasController@index')->name('upload.taza');
-Route::post('/tazas/create','TazasController@store');
+Route::get('/admin/tazas/create','TazasController@index')->name('tazas.admin.create');
+Route::post('/admin/tazas/create','TazasController@store');
+Route::get('/admin/tazas/all', 'TazasController@all')->name('tazas.admin.all');
 
-Route::get('/chasis/create','ChasisController@index')->name('upload.chasis');
-Route::post('/chasis/create','ChasisController@store');
+Route::get('/admin/chasis/create','ChasisController@index')->name('chasis.admin.create');
+Route::post('/admin/chasis/create','ChasisController@store');
+Route::get('/admin/chasis/all', 'ChasisController@all')->name('chasis.admin.all');
 
-Route::get('/autos/create','AutosController@crearAuto')->name('upload.auto');
-Route::post('/autos/create','AutosController@store');
-Route::get('/autos/all','AutosController@index')->name('autos.todos');
+Route::get('/autos/mine', 'AutosUserController@index')->name('autos.user.all')->middleware('auth');
+Route::get('/autos/create','AutosUserController@create')->name('autos.user.create');
+Route::post('/autos/create','AutosUserController@store');
+Route::get('/admin/autos/all','AutosAdminController@index')->name('autos.admin.all')->middleware('admin');
+
 // Dejar esta ruta para lo ultimo. EL ORDEN DE LAS RUTAS IMPORTA!
-Route::get('/autos/{auto}','AutosController@show')->name('autos.uno');
+Route::get('/autos/{auto}','AutosAdminController@show')->name('autos.uno');
 
 Auth::routes();
 

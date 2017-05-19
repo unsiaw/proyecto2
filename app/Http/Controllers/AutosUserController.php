@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Autos;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
-class AutosController extends Controller
+class AutosUserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,14 +15,9 @@ class AutosController extends Controller
      */
     public function index()
     {
-        $autos = Autos::all();
+        $autos = Autos::where('user_id',Auth::user()->id)->get();
 
         return view('autos.index',compact('autos'));
-    }
-    
-    public function crearAuto()
-    {
-        return view('autos.form');
     }
 
     /**
@@ -31,7 +27,7 @@ class AutosController extends Controller
      */
     public function create()
     {
-        //
+        return view('autos.form');
     }
 
     /**

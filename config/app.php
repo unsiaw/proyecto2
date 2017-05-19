@@ -168,6 +168,7 @@ return [
          */
         Laravel\Tinker\TinkerServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
+        //Emadadly\LaravelUuid\LaravelUuidServiceProvider::class,
 
         /*
          * Application Service Providers...

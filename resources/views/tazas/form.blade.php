@@ -7,7 +7,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Cargar un nueva taza</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('upload.taza') }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('tazas.admin.create') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
