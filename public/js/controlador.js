@@ -22,8 +22,10 @@ function iniciarAuto() {
         auto.color = color;
         cambiarColorVista(color);
     }
+    console.log("EL JSON DE LOS CHASIS", jsonChasis);
     auto.chasis = jsonChasis[num_chasis];
     auto.tazas = jsonTazas[num_taza];
+    console.log(auto);
     pintarAuto(auto);
     // Guardo datos en el localStorage
     localStorage.setItem("color",auto.color);

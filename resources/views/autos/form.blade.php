@@ -79,7 +79,28 @@
             canvas.setHeight(miContenedor.offsetHeight * 1.7);
 
             cargarTheme();
-            iniciarAuto();
+        });
+    </script>
+    <script>
+        $(function() {
+            $.ajax({
+                url: "{{ route('chasis.json') }}",
+                context: document.body,
+                success: function (data) {
+                    jsonChasis = data;
+                    console.log(jsonChasis);
+                    $.ajax({
+                        url: "{{ route('tazas.json') }}",
+                        context: document.body,
+                        success: function (data) {
+                            jsonTazas = data;
+                            console.log(jsonChasis);
+                            iniciarAuto();
+                            //mostrarPizzas(ordenarPizzas(data));
+                        }
+                    });
+                }
+            });
         });
     </script>
 @endsection

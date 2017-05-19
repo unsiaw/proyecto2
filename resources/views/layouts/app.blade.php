@@ -47,7 +47,6 @@
     <script src="{{ URL::to('js/utils.js') }}"></script>
     <script src="{{ URL::to('js/vista.js') }}"></script>
     <script src="{{ URL::to('js/controlador.js') }}"></script>
-    <script src="{{ URL::to('js/modelo.js') }}"></script>
     <script>
         $( document ).ready(function() {
             cargarTheme();

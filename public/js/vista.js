@@ -42,18 +42,18 @@ function pintarAuto(auto) {
                         canvas.renderAll(); // renderizo
                         $(':button').prop('disabled', false); // vuelvo a activar todos los botones
                     },{
-                        left: auto.chasis.ruedas.atras.x,
-                        top: auto.chasis.ruedas.atras.y,
-                        width: auto.chasis.ruedas.size,
-                        height: auto.chasis.ruedas.size,
+                        left: auto.chasis.rueda2x,
+                        top: auto.chasis.rueda2y,
+                        width: auto.chasis.ruedasize,
+                        height: auto.chasis.ruedasize,
                         originX: "center",
                         originY: "center"
                     });
                 },{
-                    left: auto.chasis.ruedas.adelante.x,
-                    top: auto.chasis.ruedas.adelante.y,
-                    width: auto.chasis.ruedas.size,
-                    height: auto.chasis.ruedas.size,
+                    left: auto.chasis.rueda1x,
+                    top: auto.chasis.rueda1y,
+                    width: auto.chasis.ruedasize,
+                    height: auto.chasis.ruedasize,
                     originX: "center",
                     originY: "center"
             });
