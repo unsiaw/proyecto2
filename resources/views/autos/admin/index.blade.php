@@ -12,12 +12,13 @@
                         <tr>
                             <th>#</th>
                             <th>Creado</th>
+                            <th>Autor</th>
                             <th>Acción</th>
                         </tr>
                         </thead>
                         <tbody>
                             @foreach($autos as $auto)
-                                @include('autos.auto')
+                                @include('autos.admin.auto')
                             @endforeach
                         </tbody>
                     </table>
