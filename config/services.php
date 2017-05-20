@@ -39,27 +39,27 @@ return [
         ],
 
     'facebook' => [
-        'client_id' => '1302753823153084',
-        'client_secret' => '4ef5495db1b954193879a331e2a3e23d',
-        'redirect' => 'http://localhost:8000/callback/facebook',
+        'client_id' => env('FACEBOOK_CLIENT_ID'),
+        'client_secret' => env('FACEBOOK_CLIENT_SECRET'),
+        'redirect' => env('FACEBOOK_REDIRECT'),
     ],
 
     'twitter' => [
-        'client_id' => '7AoMJWZLr52EXNGMF4ECSdRCH',
-        'client_secret' => 'UTfUYHrbJ5evIGMmiPaF9HYQ8kGoN0hx0aaedr7QvAhVRmVuDx',
-        'redirect' => 'http://localhost:8000/callback/twitter',
+        'client_id' => env('TWITTER_CLIENT_ID'),
+        'client_secret' => env('TWITTER_CLIENT_SECRET'),
+        'redirect' => env('TWITTER_REDIRECT'),
     ],
 
 
     'github' => [
-        'client_id' => '246ea443d91020c21b93',
-        'client_secret' => 'afcdecb224abe072236cd93e18ad2f870867f536',
-        'redirect' => 'http://localhost:8000/callback/github',
+        'client_id' => env('GITHUB_CLIENT_ID'),
+        'client_secret' => env('GITHUB_CLIENT_SECRET'),
+        'redirect' => env('GITHUB_REDIRECT'),
     ],
 
     'google' => [
-        'client_id' => '66148474000-79tqb6iud59pigt80h3lhjt6pdel70as.apps.googleusercontent.com',
-        'client_secret' => 'HajVGxmN6g3RT5XWxPVrb7bM',
-        'redirect' => 'http://localhost:8000/callback/google',
+        'client_id' => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect' => env('GOOGLE_REDIRECT'),
     ],
 ];
