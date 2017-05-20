@@ -78,6 +78,8 @@ class ChasisController extends Controller
         $chasis->ruedasize = $request->ruedasize;
         $chasis->save();
 
+        $request->session()->flash('success', true);
+
         return view('chasis.form');
 
     }
