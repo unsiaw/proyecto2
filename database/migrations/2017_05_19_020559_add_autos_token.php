@@ -14,7 +14,7 @@ class AddAutosToken extends Migration
     public function up()
     {
         Schema::table('autos', function (Blueprint $table) {
-            $table->uuid('token');
+            $table->uuid('uuid');
         });
     }
 
@@ -26,7 +26,7 @@ class AddAutosToken extends Migration
     public function down()
     {
         Schema::table('autos', function (Blueprint $table) {
-            $table->dropColumn('token');
+            $table->dropColumn('uuid');
         });
     }
 }

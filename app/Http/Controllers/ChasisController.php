@@ -67,8 +67,8 @@ class ChasisController extends Controller
             'ruedasize' => 'required|integer',
         ]);
 
-        $pathFondo = $request->fondo->store('images');
-        $pathChasis = $request->chasis->store('images');
+        $pathFondo = $request->fondo->store('public/images');
+        $pathChasis = $request->chasis->store('public/images');
         $chasis = new Chasis;
         $chasis->nombre = $request->nombre;
         $chasis->fondo = $pathFondo;
@@ -94,7 +94,7 @@ class ChasisController extends Controller
      */
     public function show(Chasis $chasis)
     {
-        //
+        return view('chasis.show', compact('chasis'));
     }
 
     /**
