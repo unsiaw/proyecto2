@@ -14,7 +14,7 @@
                             <label for="name" class="col-md-4 control-label"></label>
 
                             <div class="input-group col-md-6">
-                                    <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
+                                    <span class="input-group-addon"><i class="fa fa-user" aria-hidden="true"></i></span>
                                 <input id="name" type="text" class="form-control" placeholder="Name" name="name" value="{{ old('name') }}" required autofocus>
                                 @if ($errors->has('name'))
                                     <span class="help-block">
