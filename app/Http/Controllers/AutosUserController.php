@@ -38,7 +38,11 @@ class AutosUserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $auto = new Autos;
+        $auto->chasis_id = $request->chasis_id;
+        $auto->taza_id = $request->taza_id;
+        $auto->user_id = Auth::user()->id;
+        $auto->save();
     }
 
     /**

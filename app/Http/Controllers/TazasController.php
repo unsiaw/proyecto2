@@ -61,7 +61,7 @@ class TazasController extends Controller
             'fondo' => 'required|file|image|mimes:png|max:2048'
         ]);
 
-        $pathFondo = $request->fondo->store('images');
+        $pathFondo = $request->fondo->store('public/images');
         $taza = new Tazas;
         $taza->nombre = $request->nombre;
         $taza->taza = $pathFondo;
@@ -80,7 +80,7 @@ class TazasController extends Controller
      */
     public function show(Tazas $tazas)
     {
-        //
+        return view('tazas.show', compact('tazas'));
     }
 
     /**
