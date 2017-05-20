@@ -24,7 +24,9 @@ class ChasisController extends Controller
 
     public function all()
     {
-        // TODO Devolver la lista de todos los chasis y mostrarlos en una tabla
+        $chasis = Chasis::all();
+
+        return view('chasis.index',compact('chasis'));
     }
     /**
      * Display a listing of the resource.
