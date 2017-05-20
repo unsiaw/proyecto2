@@ -3,15 +3,18 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Emadadly\LaravelUuid\Uuids;
 
 class Autos extends Model
 {
+    use Uuids;
+
     /**
      * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $guarded = ['id', 'token'];
+    protected $guarded = ['id', 'uuid'];
 
     //
     public function chasis()
