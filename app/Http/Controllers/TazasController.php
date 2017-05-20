@@ -65,6 +65,8 @@ class TazasController extends Controller
         $taza->taza = $pathFondo;
         $taza->save();
 
+        $request->session()->flash('success', true);
+
         return view('tazas.form');
     }
 

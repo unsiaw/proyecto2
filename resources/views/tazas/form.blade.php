@@ -4,6 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        <strong>Listo!</strong> Se agregó la taza correctamente
+                    </div>
+                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">Cargar un nueva taza</div>
                     <div class="panel-body">
