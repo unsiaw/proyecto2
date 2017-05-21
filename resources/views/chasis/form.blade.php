@@ -8,6 +8,7 @@
                     <div class="alert alert-success" role="alert">
                         <strong>Listo!</strong> Se agregó el chasis correctamente
                     </div>
+                    {{ session()->forget('success') }}
                 @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">Cargar un nuevo chasis</div>

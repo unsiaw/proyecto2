@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Chasis;
 use Illuminate\Http\Request;
+use Session;
 
 class ChasisController extends Controller
 {
@@ -49,16 +50,6 @@ class ChasisController extends Controller
     public function index()
     {
         return view('chasis.form');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -111,36 +102,16 @@ class ChasisController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Chasis  $chasis
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chasis $chasis)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Chasis  $chasis
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chasis $chasis)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Chasis  $chasis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chasis $chasis)
+    public function destroy($id)
     {
-        //
+        $chasis = Chasis::findOrFail($id);
+        $chasis->delete();
+        Session::flash('success', true);
+        return redirect()->route('chasis.admin.all');
     }
 }
