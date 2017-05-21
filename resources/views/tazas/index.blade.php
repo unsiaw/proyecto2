@@ -3,14 +3,22 @@
 @section('content')
     <div class="container">
         <div class="row">
-                @if (session()->has('success'))
+            @if (session()->has('success'))
                 <div class="col-md-8 col-md-offset-2">
                     <div class="alert alert-success" role="alert">
                         <strong>Listo!</strong> Se borró la taza correctamente
                     </div>
                 </div>
                 {{ session()->forget('success') }}
-                @endif
+            @endif
+            @if (session()->has('failed'))
+                <div class="col-md-8 col-md-offset-2">
+                    <div class="alert alert-danger" role="alert">
+                        <strong>Error!</strong> No se pudo borrar la taza. Puede que esté asociada a algún auto.
+                    </div>
+                </div>
+                {{ session()->forget('failed') }}
+            @endif
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
                     <div class="panel-heading">Lista de tazas</div>

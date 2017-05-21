@@ -15,9 +15,12 @@ class CreateAutosTable extends Migration
     {
         Schema::create('autos', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('chasis_id');
-            $table->integer('tazas_id');
-            $table->integer('user_id');
+            $table->integer('chasis_id')->unsigned();
+            $table->foreign('chasis_id')->references('id')->on('chases');
+            $table->integer('tazas_id')->unsigned();
+            $table->foreign('tazas_id')->references('id')->on('tazas');
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
             $table->string('color');
             $table->string('token');
             $table->timestamps();
