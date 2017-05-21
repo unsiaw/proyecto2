@@ -6,6 +6,7 @@ use App\Autos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Webpatser\Uuid\Uuid;
+use Session;
 
 class AutosUserController extends Controller
 {
@@ -83,16 +84,6 @@ class AutosUserController extends Controller
 
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Autos  $autos
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Autos $autos)
-    {
-        //
-    }
 
     public function shared($token)
     {
@@ -106,25 +97,21 @@ class AutosUserController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Autos  $autos
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Autos $autos)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Autos  $autos
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Autos $autos)
+    public function destroy($id)
     {
-        //
+        $auto = Autos::findOrFail($id);
+        if ($auto->user_id == Auth::user()->id) {
+            $auto->delete();
+            Session::flash('success', true);
+            return redirect()->route('autos.user.all');
+        } else {
+            return redirect('/');
+        }
+
     }
 }

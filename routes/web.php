@@ -39,6 +39,11 @@ Route::get('/autos/all','AutosAdminController@index')->name('autos.admin.all')->
 
 Route::get('/autos/share/{token}','AutosUserController@shared')->name('autos.share');
 
+Route::delete('/tazas/delete/{id}', 'TazasController@destroy')->name('tazas.destroy');
+Route::delete('/autos/delete/{id}', 'AutosUserController@destroy')->name('autos.destroy');
+Route::delete('/autos/admin/delete/{id}', 'AutosAdminController@destroy')->name('autos.admin.destroy');
+Route::delete('/chasis/delete/{id}', 'ChasisUserController@destroy')->name('chasis.destroy');
+
 // Dejar estas rutas para lo ultimo. EL ORDEN DE LAS RUTAS IMPORTA!
 Route::get('/autos/{auto}','AutosUserController@show')->name('autos.uno');
 Route::get('/tazas/{tazas}','TazasController@show')->name('tazas.uno');

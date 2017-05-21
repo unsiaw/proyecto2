@@ -4,8 +4,10 @@
     <td>{{ $taza->nombre }}</td>
     <td>{{ $taza->created_at->diffForHumans() }}</td>
     <td>
-    	<a class="btn btn-info" href="{{ route('tazas.uno', $taza->id) }}">Ver</a>
-        <button type="submit" class="btn btn-danger">Borrar</button>
-   </td>
+        {{ Form::open(['route' => ['tazas.destroy', $taza->id], 'method' => 'delete', 'class' => 'form-inline']) }}
+        <a class="btn btn-info" href="{{ route('tazas.uno', $taza->id) }}">Ver</a>
+        {{ Form::submit('Borrar', ['class' => 'btn btn-danger']) }}
+        {{ Form::close() }}
+    </td>
 </tr>
     	

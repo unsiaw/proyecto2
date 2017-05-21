@@ -51,16 +51,6 @@ class TazasController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -96,38 +86,16 @@ class TazasController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Tazas  $tazas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tazas $tazas)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tazas  $tazas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Tazas $tazas)
-    {
-        //
-    }
-
-    /**
      * Remove the specified resource from storage.
      *
      * @param  \App\Tazas  $tazas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tazas $tazas)
+    public function destroy($id)
     {
-        //Tazas::destroy($tazas);
-        //Session::flash('success', true);
-        //return redirect()->route('tazas.admin.all');
+        $taza = Tazas::findOrFail($id);
+        $taza->delete();
+        Session::flash('success', true);
+        return redirect()->route('tazas.admin.all');
     }
 }
