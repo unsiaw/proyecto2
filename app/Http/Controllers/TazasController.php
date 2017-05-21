@@ -27,6 +27,7 @@ class TazasController extends Controller
         $taza = Tazas::find($id);
         if ($taza)
         {
+            $taza->taza = \Storage::url($taza->taza);
             return $taza;
         } else {
             return response([],404);

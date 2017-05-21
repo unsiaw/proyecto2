@@ -67,6 +67,17 @@ class AutosUserController extends Controller
         //
     }
 
+    public function shared($uuid)
+    {
+        $auto = Autos::where('uuid',$uuid)->get()->first();
+        if ($auto)
+        {
+            return view('autos.show',compact('auto'));
+        } else {
+            return redirect('/');
+        }
+    }
+
     /**
      * Update the specified resource in storage.
      *

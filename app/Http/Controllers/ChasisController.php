@@ -28,6 +28,8 @@ class ChasisController extends Controller
         $chasis = Chasis::find($id);
         if ($chasis)
         {
+            $chasis->fondo = \Storage::url($chasis->fondo);
+            $chasis->chasis = \Storage::url($chasis->chasis);
             return $chasis;
         } else {
             return response([],404);
