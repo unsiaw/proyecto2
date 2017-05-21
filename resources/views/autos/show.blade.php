@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-12 col-sm-6 col-md-8 col-md-8 well">
-                <div class="hidden-xs"><h2>Personalizá tu auto</h2></div>
+                <div class="hidden-xs"><h2>Vista del auto</h2></div>
                 <div id="miContenedor" class="col-xs-12 full-width well">
                     <canvas id="imagenAuto"></canvas>
                 </div>

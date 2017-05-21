@@ -137,7 +137,7 @@
                     data: {chasis_id: chasis_id, color: color, tazas_id: tazas_id},
                     success: function( msg ) {
                         $("#formulario").hide();
-                        $("#ajaxResponse").append("<div class=\"alert alert-success\" role=\"alert\">"+msg.msg+"</div>");
+                        $("#ajaxResponse").append("<div class=\"alert alert-success\" role=\"alert\"><button class=\"close\" data-dismiss=\"alert\">×</button>"+msg.msg+"</div>");
                     }
                 });
             });

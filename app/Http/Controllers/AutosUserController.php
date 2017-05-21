@@ -72,7 +72,8 @@ class AutosUserController extends Controller
     public function show(Autos $auto)
     {
         // Reviso que el usuario sea el mismo que creó el auto
-        if ($auto->user_id == Auth::user()->id)
+        // o que sea admin
+        if (($auto->user_id == Auth::user()->id) || (Auth::user()->isAdmin()))
         {
             return view('autos.show',compact('auto'));
         } else {
