@@ -3,9 +3,8 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Register</div>
+        <div class="col-md-8 col-md-offset-1">
+                <div class="panel-heading"><h3>Register</h3></div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
@@ -61,12 +60,19 @@
                                 <input id="password-confirm" type="password" class="form-control" placeholder="Confirm Password" name="password_confirmation" required>
                             </div>
                         </div>
-
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Register
-                                </button>
+                                     <button type="submit" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-ok-sign"></span>
+                                           &nbsp;Register
+                                     </button>
+                                <div class="row">
+                                <div class="col-md-8 col-md-offset-3"><br>--Or Register With--<br><br>    
+                                        <a class="btn btn-lg btn-social-icon btn-facebook" href="redirect/facebook"><span class="fa fa-facebook"></span></a>&nbsp;
+                                        <a class="btn btn-lg btn-social-icon btn-twitter" href="redirect/twitter"><span class="fa fa-twitter"></span></a>&nbsp;
+                                        <a class="btn btn-lg btn-social-icon btn-github" href="redirect/github"><span class="fa fa-github"></span></a>&nbsp;
+                                        <a class="btn btn-lg btn-social-icon btn-google" href="redirect/google"><span class="fa fa-google"></span></a>
+                                </div>
+                                </div>     
                             </div>
                         </div>
                     </form>
