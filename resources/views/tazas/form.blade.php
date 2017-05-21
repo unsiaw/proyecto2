@@ -29,12 +29,11 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group{{ $errors->has('fondo') ? ' has-error' : '' }}">
                                 <label for="fondo" class="col-md-4 control-label">Taza</label>
 
                                 <div class="col-md-6">
-                                    <input id="fondo" type="file" class="form-control" name="fondo" value="{{ old('fondo') }}" required>
+                                    <input id="fondo" type="file" name="fondo" value="{{ old('fondo') }}" required>
 
                                     @if ($errors->has('fondo'))
                                         <span class="help-block">
