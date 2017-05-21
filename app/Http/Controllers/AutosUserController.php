@@ -71,7 +71,15 @@ class AutosUserController extends Controller
      */
     public function show(Autos $auto)
     {
-        return view('autos.show',compact('auto'));
+        // Reviso que el usuario sea el mismo que creó el auto
+        if ($auto->user_id == Auth::user()->id)
+        {
+            return view('autos.show',compact('auto'));
+        } else {
+            // Sino, lo mando a ver la lista de sus autos
+            return redirect()->route('autos.user.all');
+        }
+
     }
 
     /**

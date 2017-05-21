@@ -24,7 +24,7 @@
             <ul class="list-group">
                     <li class="list-group-item"><h4>ID: {{ $auto->id }}</h4></li>
                     <li class="list-group-item"><h4>Chasis ID: {{ $auto->chasis_id }}</h4></li>
-                    <li class="list-group-item"><h4>Taza ID: {{ $auto->taza_id }}</h4></li>
+                    <li class="list-group-item"><h4>Taza ID: {{ $auto->tazas_id }}</h4></li>
                     <li class="list-group-item"><h4>Color: {{ $auto->color }}</h4></li>
             </ul>
         </div>
