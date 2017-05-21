@@ -13,9 +13,13 @@
     
     
         <div class="col-xs-12 col-sm-6 col-md-8 col-md-4">
-            <h4>Link público para compartir: </h4><div class="alert alert-info well well-sm" id="p1"><a href="{{route('autos.share',$auto->token)}}">{{route('autos.share',$auto->token)}}</a></div>
+            <h4>Link público para compartir: </h4>
+        <div class="alert alert-info well well-sm" id="p1">
+            <a href="{{route('autos.share',$auto->token)}}">{{route('autos.share',$auto->token)}}</a>
+        </div>
+        <div class="col-md-12">
             <button class="btn btn-primary" onclick="copyToClipboard('#p1')">Copiar Link</button>
-                
+         </div>       
                 <div class="col-md-8"><h3><br>Datos del Chasis</h3>
             <ul class="list-group">
                     <li class="list-group-item"><h4>ID: {{ $auto->id }}</h4></li>
