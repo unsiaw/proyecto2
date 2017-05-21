@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Tazas;
 use Illuminate\Http\Request;
+use Session;
 
 class TazasController extends Controller
 {
@@ -125,6 +126,8 @@ class TazasController extends Controller
      */
     public function destroy(Tazas $tazas)
     {
-        //
+        //Tazas::destroy($tazas);
+        //Session::flash('success', true);
+        //return redirect()->route('tazas.admin.all');
     }
 }

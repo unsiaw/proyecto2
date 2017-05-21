@@ -44,7 +44,6 @@ Route::get('/autos/{auto}','AutosUserController@show')->name('autos.uno');
 Route::get('/tazas/{tazas}','TazasController@show')->name('tazas.uno');
 Route::get('/chasis/{chasis}','ChasisController@show')->name('chasis.uno');
 
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
