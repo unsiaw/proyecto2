@@ -53,7 +53,7 @@ class AutosUserController extends Controller
         $auto->user_id = Auth::user()->id;
         $auto->token = Uuid::generate();
         $auto->save();
-        
+
         $response = array(
             'status' => 'success',
             'msg' => 'El auto se creó correctamente',
