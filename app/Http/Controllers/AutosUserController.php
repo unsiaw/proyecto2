@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class AutosUserController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware(['auth'])->except(['create', 'shared']);
+    }
+
     /**
      * Display a listing of the resource.
      *

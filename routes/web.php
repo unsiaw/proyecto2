@@ -40,7 +40,7 @@ Route::get('/autos/all','AutosAdminController@index')->name('autos.admin.all')->
 Route::get('/autos/share/{uuid}','AutosUserController@shared')->name('autos.share');
 
 // Dejar estas rutas para lo ultimo. EL ORDEN DE LAS RUTAS IMPORTA!
-Route::get('/autos/{auto}','AutosAdminController@show')->name('autos.uno');
+Route::get('/autos/{auto}','AutosUserController@show')->name('autos.uno');
 Route::get('/tazas/{tazas}','TazasController@show')->name('tazas.uno');
 Route::get('/chasis/{chasis}','ChasisController@show')->name('chasis.uno');
 
