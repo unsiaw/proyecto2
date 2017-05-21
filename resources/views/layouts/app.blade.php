@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html lang="{{ config('app.locale') }}">
+
 <head>
+    <script type="text/javascript">
+        var APP_URL = {!! json_encode(url('/')) !!};
+    </script>
+
     <!-- Metada -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -53,9 +58,6 @@
         });
     </script>
     @yield('scripts')
-    <script type="text/javascript">
-        var APP_URL = {!! json_encode(url('/')) !!};
-    </script>
 
 </body>
 </html>
