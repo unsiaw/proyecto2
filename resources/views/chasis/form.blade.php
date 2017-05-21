@@ -34,7 +34,7 @@
                                 <label for="fondo" class="col-md-4 control-label">Fondo</label>
 
                                 <div class="col-md-6">
-                                    <input id="fondo" type="file" class="form-control" name="fondo" value="{{ old('fondo') }}" required>
+                                    <input id="fondo" type="file" name="fondo" value="{{ old('fondo') }}" required>
 
                                     @if ($errors->has('fondo'))
                                         <span class="help-block">
@@ -48,7 +48,7 @@
                                 <label for="chasis" class="col-md-4 control-label">Chasis</label>
 
                                 <div class="col-md-6">
-                                    <input id="chasis" type="file" class="form-control" name="chasis" value="{{ old('chasis') }}" required>
+                                    <input id="chasis" type="file" name="chasis" value="{{ old('chasis') }}" required>
 
                                     @if ($errors->has('chasis'))
                                         <span class="help-block">
