@@ -13,7 +13,7 @@
     </div>
     <div class="container">
         <div class="col-xs-12 col-sm-6 col-md-8">
-            Enlace para compartir: <div class="well well-sm">{{route('autos.share',$auto->uuid)}}</div>
+            Enlace para compartir: <div class="well well-sm">{{route('autos.share',$auto->token)}}</div>
         </div>
     </div>
 

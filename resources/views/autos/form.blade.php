@@ -54,16 +54,29 @@
                                 </div>
                             </li>
                             <li role="presentation">
-                                <div class="btn-group text-center" role="group" aria-label="Cargar imagen">
+                                <div class="btn-group text-center col-xs-6 col-sm-6" role="group" aria-label="Cargar imagen">
                                     <button type="button" class="btn btn-success btn-lg btn-block" aria-label="Guardar!" onclick="guardarImagen()"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Descargar</button>
                                 </div>
-                                <div class="btn-group text-center" role="group" aria-label="Cargar random">
+                                <div class="btn-group text-center col-xs-6 col-sm-6" role="group" aria-label="Cargar random">
                                     <button type="button" class="btn btn-warning btn-lg btn-block" aria-label="Random!" onclick="cargarRandom()">
                                         Random <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
                                     </button>
                                 </div>
+                                @if (!Auth::guest())
+                                    <form class="form-horizontal" role="form" id="formulario" enctype="multipart/form-data">
+                                        {{ csrf_field() }}
+                                        <div class="btn-group text-center col-xs-6 col-sm-6" role="group" aria-label="Guardar auto">
+                                            <button type="submit" class="btn btn-info btn-lg btn-block" aria-label="Guardar auto!" >
+                                                Guardar auto <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                                            </button>
+                                        </div>
+                                    </form>
+                                @endif
+
                             </li>
                         </ul>
+                    </div>
+                    <div id="ajaxResponse">
                     </div>
                 </div>
             </div>
@@ -79,6 +92,11 @@
             canvas.setHeight(miContenedor.offsetHeight * 1.7);
 
             cargarTheme();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         });
     </script>
     <script>
@@ -102,5 +120,25 @@
                 }
             });
         });
+    </script>
+    <script>
+             $('#formulario').submit(function (e) {
+                e.preventDefault();
+                var chasis_id = auto.chasis.id;
+                var tazas_id = auto.tazas.id;
+                var color = "#"+$('#blend-color').val();
+                console.log(chasis_id);
+                console.log(tazas_id);
+                console.log(color);
+                $.ajax({
+                    type: "POST",
+                    url: "{{ route('autos.user.create') }}",
+                    data: {chasis_id: chasis_id, color: color, tazas_id: tazas_id},
+                    success: function( msg ) {
+                        $("#formulario").hide();
+                        $("#ajaxResponse").append("<div class=\"alert alert-success\" role=\"alert\">"+msg.msg+"</div>");
+                    }
+                });
+            });
     </script>
 @endsection

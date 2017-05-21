@@ -7,14 +7,14 @@ use Emadadly\LaravelUuid\Uuids;
 
 class Autos extends Model
 {
-    use Uuids;
+    //use Uuids;
 
     /**
      * The attributes that aren't mass assignable.
      *
      * @var array
      */
-    protected $guarded = ['id', 'uuid'];
+    protected $guarded = ['id'];
 
     //
     public function chasis()
