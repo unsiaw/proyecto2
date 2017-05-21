@@ -55,28 +55,29 @@
                             </li>
                             <li role="presentation">
                                 <div class="btn-group text-center col-xs-6 col-sm-6" role="group" aria-label="Cargar imagen">
-                                    <button type="button" class="btn btn-success btn-lg btn-block" aria-label="Guardar!" onclick="guardarImagen()"><span class="glyphicon glyphicon-download-alt" aria-hidden="true"></span> Descargar</button>
+                                    <button type="button" class="btn btn-success btn-lg btn-block" aria-label="Guardar!" onclick="guardarImagen()"><span class="glyphicon glyphicon glyphicon-export" aria-hidden="true"></span> Descargar</button>
                                 </div>
                                 <div class="btn-group text-center col-xs-6 col-sm-6" role="group" aria-label="Cargar random">
                                     <button type="button" class="btn btn-warning btn-lg btn-block" aria-label="Random!" onclick="cargarRandom()">
                                         Random <span class="glyphicon glyphicon-random" aria-hidden="true"></span>
                                     </button>
                                 </div>
-                                @if (!Auth::guest())
+                                
+
+                            </li>
+                        </ul><br>
+                        @if (!Auth::guest())
                                     <form class="form-horizontal" role="form" id="formulario" enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                        <div class="btn-group text-center col-xs-6 col-sm-6" role="group" aria-label="Guardar auto">
+                                        <div class="btn-group text-center col-xs-6 col-sm-12" role="group" aria-label="Guardar auto">
                                             <button type="submit" class="btn btn-info btn-lg btn-block" aria-label="Guardar auto!" >
-                                                Guardar auto <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span>
+                                                <span class="glyphicon glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
                                             </button>
                                         </div>
                                     </form>
-                                @endif
-
-                            </li>
-                        </ul>
+                        @endif
                     </div>
-                    <div id="ajaxResponse">
+                    <div class="btn-group text-center col-xs-6 col-sm-12" id="ajaxResponse">
                     </div>
                 </div>
             </div>
