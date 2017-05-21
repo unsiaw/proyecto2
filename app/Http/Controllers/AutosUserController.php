@@ -56,6 +56,7 @@ class AutosUserController extends Controller
         $auto->save();
 
         $response = array(
+            'token' => route('autos.share',(string)$auto->token),
             'status' => 'success',
             'msg' => 'El auto se creó correctamente',
         );
