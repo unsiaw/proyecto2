@@ -25,7 +25,7 @@ class AutosTableSeeder extends Seeder
                 'chasis_id' => Chasis::inRandomOrder()->first()->id,
                 'user_id' => User::inRandomOrder()->first()->id,
                 'color' => $faker->hexColor,
-                'uuid' => $faker->uuid,
+                'token' => Uuid::generate(),
                 'created_at' => Carbon::now()
             ],
              [
@@ -33,7 +33,7 @@ class AutosTableSeeder extends Seeder
                  'chasis_id' => Chasis::inRandomOrder()->first()->id,
                  'user_id' => User::inRandomOrder()->first()->id,
                  'color' => $faker->hexColor,
-                 'uuid' => $faker->uuid,
+                 'token' => Uuid::generate(),
                  'created_at' => Carbon::now()
              ],
              [
@@ -41,7 +41,7 @@ class AutosTableSeeder extends Seeder
                  'chasis_id' => Chasis::inRandomOrder()->first()->id,
                  'user_id' => User::inRandomOrder()->first()->id,
                  'color' => $faker->hexColor,
-                 'uuid' => $faker->uuid,
+                 'token' => Uuid::generate(),
                  'created_at' => Carbon::now()
              ],
              [
@@ -49,7 +49,7 @@ class AutosTableSeeder extends Seeder
                  'chasis_id' => Chasis::inRandomOrder()->first()->id,
                  'user_id' => User::inRandomOrder()->first()->id,
                  'color' => $faker->hexColor,
-                 'uuid' => $faker->uuid,
+                 'token' => Uuid::generate(),
                  'created_at' => Carbon::now()
              ],
              [
@@ -57,7 +57,7 @@ class AutosTableSeeder extends Seeder
                  'chasis_id' => Chasis::inRandomOrder()->first()->id,
                  'user_id' => User::inRandomOrder()->first()->id,
                  'color' => $faker->hexColor,
-                 'uuid' => $faker->uuid,
+                 'token' => Uuid::generate(),
                  'created_at' => Carbon::now()
              ],
              [
@@ -65,7 +65,7 @@ class AutosTableSeeder extends Seeder
                  'chasis_id' => Chasis::inRandomOrder()->first()->id,
                  'user_id' => User::inRandomOrder()->first()->id,
                  'color' => $faker->hexColor,
-                 'uuid' => $faker->uuid,
+                 'token' => Uuid::generate(),
                  'created_at' => Carbon::now()
              ]
         ]);

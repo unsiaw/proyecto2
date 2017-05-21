@@ -14,18 +14,31 @@ class ChasisController extends Controller
 
     public function json()
     {
-        return Chasis::all();
+        $chasis = Chasis::all();
+        foreach ($chasis as $chasi)
+        {
+            $chasi->fondo = \Storage::url($chasi->fondo);
+            $chasi->chasis = \Storage::url($chasi->chasis);
+        }
+        return $chasis;
     }
 
     public function jsonId($id)
     {
-        return Chasis::find($id);
+        $chasis = Chasis::find($id);
+        if ($chasis)
+        {
+            $chasis->fondo = \Storage::url($chasis->fondo);
+            $chasis->chasis = \Storage::url($chasis->chasis);
+            return $chasis;
+        } else {
+            return response([],404);
+        }
     }
 
     public function all()
     {
         $chasis = Chasis::all();
-
         return view('chasis.index',compact('chasis'));
     }
     /**

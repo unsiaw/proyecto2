@@ -19,6 +19,7 @@ class CreateAutosTable extends Migration
             $table->integer('tazas_id');
             $table->integer('user_id');
             $table->string('color');
+            $table->string('token');
             $table->timestamps();
         });
     }

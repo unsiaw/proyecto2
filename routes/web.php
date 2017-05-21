@@ -37,8 +37,10 @@ Route::get('/autos/create','AutosUserController@create')->name('autos.user.creat
 Route::post('/autos/create','AutosUserController@store');
 Route::get('/autos/all','AutosAdminController@index')->name('autos.admin.all')->middleware('admin');
 
+Route::get('/autos/share/{token}','AutosUserController@shared')->name('autos.share');
+
 // Dejar estas rutas para lo ultimo. EL ORDEN DE LAS RUTAS IMPORTA!
-Route::get('/autos/{auto}','AutosAdminController@show')->name('autos.uno');
+Route::get('/autos/{auto}','AutosUserController@show')->name('autos.uno');
 Route::get('/tazas/{tazas}','TazasController@show')->name('tazas.uno');
 Route::get('/chasis/{chasis}','ChasisController@show')->name('chasis.uno');
 

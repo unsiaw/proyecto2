@@ -4,6 +4,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        <strong>Listo!</strong> Se agregó el auto correctamente
+                    </div>
+                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">Lista de autos propios</div>
                     <div class="panel-body">

@@ -14,18 +14,29 @@ class TazasController extends Controller
 
     public function json()
     {
-        return Tazas::all();
+        $tazas = Tazas::all();
+        foreach ($tazas as $taza)
+        {
+            $taza->taza = \Storage::url($taza->taza);
+        }
+        return $tazas;
     }
 
     public function jsonId($id)
     {
-        return Tazas::find($id);
+        $taza = Tazas::find($id);
+        if ($taza)
+        {
+            $taza->taza = \Storage::url($taza->taza);
+            return $taza;
+        } else {
+            return response([],404);
+        }
     }
 
     public function all()
     {
         $tazas = Tazas::all();
-
         return view('tazas.index',compact('tazas'));
     }
     /**

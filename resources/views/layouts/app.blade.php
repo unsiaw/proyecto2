@@ -53,6 +53,9 @@
         });
     </script>
     @yield('scripts')
+    <script type="text/javascript">
+        var APP_URL = {!! json_encode(url('/')) !!};
+    </script>
 
 </body>
 </html>

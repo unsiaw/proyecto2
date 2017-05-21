@@ -1,22 +1,19 @@
 
-// Constantes
-const path_chasis = "img/chasis/";
-const path_tazas = "img/tazas/";
-
 var canvas;
+var APP_URL;
 
 function pintarAuto(auto) {
     $(':button').prop('disabled', true); // desactivo todos los botones
     canvas.clear(); // limpio lo que haya en el canvas
 
     // Pinto fondo
-    fabric.Image.fromURL(path_chasis+auto.chasis.fondo, function (img) {
+    fabric.Image.fromURL(APP_URL+auto.chasis.fondo, function (img) {
         img.selectable = false;
         img.crossOrigin = 'anonymous';
         canvas.add(img);
 
         // Pinto chasis
-        fabric.Image.fromURL(path_chasis+auto.chasis.chasis, function (img) {
+        fabric.Image.fromURL(APP_URL+auto.chasis.chasis, function (img) {
             img.selectable = false;
             img.crossOrigin = 'anonymous';
             canvas.add(img);
@@ -28,13 +25,13 @@ function pintarAuto(auto) {
             img.applyFilters(canvas.renderAll.bind(canvas));
 
             // Pinto la taza de adelante
-            fabric.Image.fromURL(path_tazas+auto.tazas.taza, function (img) {
+            fabric.Image.fromURL(APP_URL+auto.tazas.taza, function (img) {
                     img.selectable = false;
                     img.crossOrigin = 'anonymous';
                     canvas.add(img);
                     canvas.bringToFront(img);
                     // Pinto la taza de atras
-                    fabric.Image.fromURL(path_tazas+auto.tazas.taza, function (img) {
+                    fabric.Image.fromURL(APP_URL+auto.tazas.taza, function (img) {
                         img.selectable = false;
                         img.crossOrigin = 'anonymous';
                         canvas.add(img);
@@ -66,7 +63,7 @@ function pintarAuto(auto) {
 function cargarTheme() {
     var themeElegido = localStorage.getItem("theme");
     if ((themeElegido === undefined) || (themeElegido === null)) {
-        themeElegido = "css/bootstrap-theme.min.css";
+        themeElegido = APP_URL+"/css/bootstrap-theme.min.css";
         localStorage.setItem("theme", themeElegido);
     }
     $("#theme").attr("href", themeElegido);

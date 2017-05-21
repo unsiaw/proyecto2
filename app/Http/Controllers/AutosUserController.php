@@ -5,9 +5,17 @@ namespace App\Http\Controllers;
 use App\Autos;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Webpatser\Uuid\Uuid;
 
 class AutosUserController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware(['auth'])->except(['create', 'shared']);
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -40,9 +48,19 @@ class AutosUserController extends Controller
     {
         $auto = new Autos;
         $auto->chasis_id = $request->chasis_id;
-        $auto->taza_id = $request->taza_id;
+        $auto->tazas_id = $request->tazas_id;
+        $auto->color = $request->color;
         $auto->user_id = Auth::user()->id;
+        $auto->token = Uuid::generate();
         $auto->save();
+
+        $response = array(
+            'status' => 'success',
+            'msg' => 'El auto se creó correctamente',
+        );
+        return \Response::json($response);
+        //$request->session()->flash('success', true);
+        //return redirect()->route('autos.user.all');
     }
 
     /**
@@ -65,6 +83,17 @@ class AutosUserController extends Controller
     public function edit(Autos $autos)
     {
         //
+    }
+
+    public function shared($token)
+    {
+        $auto = Autos::where('token',$token)->get()->first();
+        if ($auto)
+        {
+            return view('autos.show',compact('auto'));
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
