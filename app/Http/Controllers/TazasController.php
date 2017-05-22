@@ -4,17 +4,41 @@ namespace App\Http\Controllers;
 
 use App\Tazas;
 use Illuminate\Http\Request;
+use Session;
 
 class TazasController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('json');
+        $this->middleware(['auth', 'admin'])->except(['json', 'jsonId']);
     }
 
     public function json()
     {
-        return Tazas::all();
+        $tazas = Tazas::all();
+        foreach ($tazas as $taza)
+        {
+            $taza->taza = \Storage::url($taza->taza);
+        }
+        return $tazas;
+    }
+
+    public function jsonId($id)
+    {
+        $taza = Tazas::find($id);
+        if ($taza)
+        {
+            $taza->taza = \Storage::url($taza->taza);
+            return $taza;
+        } else {
+            return response([],404);
+        }
+    }
+
+    public function all()
+    {
+        $tazas = Tazas::all();
+        return view('tazas.index',compact('tazas'));
     }
     /**
      * Display a listing of the resource.
@@ -24,16 +48,6 @@ class TazasController extends Controller
     public function index()
     {
         return view('tazas.form');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -49,11 +63,13 @@ class TazasController extends Controller
             'fondo' => 'required|file|image|mimes:png|max:2048'
         ]);
 
-        $pathFondo = $request->fondo->store('images');
+        $pathFondo = $request->fondo->store('public/images');
         $taza = new Tazas;
         $taza->nombre = $request->nombre;
         $taza->taza = $pathFondo;
         $taza->save();
+
+        $request->session()->flash('success', true);
 
         return view('tazas.form');
     }
@@ -66,30 +82,7 @@ class TazasController extends Controller
      */
     public function show(Tazas $tazas)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Tazas  $tazas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Tazas $tazas)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Tazas  $tazas
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Tazas $tazas)
-    {
-        //
+        return view('tazas.show', compact('tazas'));
     }
 
     /**
@@ -98,8 +91,15 @@ class TazasController extends Controller
      * @param  \App\Tazas  $tazas
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Tazas $tazas)
+    public function destroy($id)
     {
-        //
+        $taza = Tazas::findOrFail($id);
+        try {
+            $taza->delete();
+            Session::flash('success', true);
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::flash('failed', true);
+        }
+        return redirect()->route('tazas.admin.all');
     }
 }

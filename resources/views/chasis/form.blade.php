@@ -4,10 +4,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        <strong>Listo!</strong> Se agregó el chasis correctamente
+                    </div>
+                    {{ session()->forget('success') }}
+                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">Cargar un nuevo chasis</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('upload.chasis') }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('chasis.admin.create') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
@@ -29,7 +35,7 @@
                                 <label for="fondo" class="col-md-4 control-label">Fondo</label>
 
                                 <div class="col-md-6">
-                                    <input id="fondo" type="file" class="form-control" name="fondo" value="{{ old('fondo') }}" required>
+                                    <input id="fondo" type="file" name="fondo" value="{{ old('fondo') }}" required>
 
                                     @if ($errors->has('fondo'))
                                         <span class="help-block">
@@ -43,7 +49,7 @@
                                 <label for="chasis" class="col-md-4 control-label">Chasis</label>
 
                                 <div class="col-md-6">
-                                    <input id="chasis" type="file" class="form-control" name="chasis" value="{{ old('chasis') }}" required>
+                                    <input id="chasis" type="file" name="chasis" value="{{ old('chasis') }}" required>
 
                                     @if ($errors->has('chasis'))
                                         <span class="help-block">

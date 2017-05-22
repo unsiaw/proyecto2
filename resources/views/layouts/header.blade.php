@@ -19,29 +19,34 @@
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                            <li><a href="{{ route('inicio') }}">Inicio</a></li>
-                            <li><a href="{{ route('readme') }}">Créditos</a></li>
+                            <li><a href="{{ route('global.inicio') }}">Inicio</a></li>
+                            <li><a href="{{ route('global.readme') }}">Créditos</a></li>
                              <li class="dropdown">
                                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        Modelos <span class="caret"></span>
+                                        Autos <span class="caret"></span>
                                     </a>
-                                <ul class="dropdown-menu" role="menu"> 
-                                    <li><a href="{{ route('autos.todos') }}">Ver autos</a></li>
-                                    <li><a href="{{ route('upload.auto') }}">Crear auto</a></li>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li><a href="{{ route('autos.user.create') }}">Crear auto</a></li>
+                                    @if (!Auth::guest())
+                                         <li><a href="{{ route('autos.user.all') }}">Ver mis autos</a></li>
+                                    @endif
                                 </ul>
                             </li>
                             @if (!Auth::guest())
                                 @if (Auth::user()->isAdmin())
                                     <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                        Administrar <span class="caret"></span>
-                                    </a>
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                            Administrar <span class="caret"></span>
+                                        </a>
 
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li><a href="{{ route('upload.chasis') }}">Cargar chasis</a></li>
-                                        <li><a href="{{ route('upload.taza') }}">Cargar taza</a></li>
-                                    </ul>
-                                </li>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li><a href="{{ route('autos.admin.all') }}">Ver autos</a></li>
+                                            <li><a href="{{ route('chasis.admin.create') }}">Crear chasis</a></li>
+                                            <li><a href="{{ route('chasis.admin.all') }}">Administrar chasis</a></li>
+                                            <li><a href="{{ route('tazas.admin.create') }}">Crear taza</a></li>
+                                            <li><a href="{{ route('tazas.admin.all') }}">Administrar tazas</a></li>
+                                        </ul>
+                                     </li>
                                 @endif
                             @endif
                     </ul>

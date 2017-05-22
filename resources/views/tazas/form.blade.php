@@ -4,10 +4,16 @@
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
+                @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                        <strong>Listo!</strong> Se agregó la taza correctamente
+                    </div>
+                    {{ session()->forget('success') }}
+                @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">Cargar un nueva taza</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('upload.taza') }}" enctype="multipart/form-data">
+                        <form class="form-horizontal" role="form" method="POST" action="{{ route('tazas.admin.create') }}" enctype="multipart/form-data">
                             {{ csrf_field() }}
 
                             <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
@@ -24,12 +30,11 @@
                                 </div>
                             </div>
 
-
                             <div class="form-group{{ $errors->has('fondo') ? ' has-error' : '' }}">
                                 <label for="fondo" class="col-md-4 control-label">Taza</label>
 
                                 <div class="col-md-6">
-                                    <input id="fondo" type="file" class="form-control" name="fondo" value="{{ old('fondo') }}" required>
+                                    <input id="fondo" type="file" name="fondo" value="{{ old('fondo') }}" required>
 
                                     @if ($errors->has('fondo'))
                                         <span class="help-block">

@@ -4,19 +4,44 @@ namespace App\Http\Controllers;
 
 use App\Chasis;
 use Illuminate\Http\Request;
+use Session;
 
 class ChasisController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except('json');
+        $this->middleware(['auth', 'admin'])->except(['json', 'jsonId']);
     }
 
     public function json()
     {
-        return Chasis::all();
+        $chasis = Chasis::all();
+        foreach ($chasis as $chasi)
+        {
+            $chasi->fondo = \Storage::url($chasi->fondo);
+            $chasi->chasis = \Storage::url($chasi->chasis);
+        }
+        return $chasis;
     }
 
+    public function jsonId($id)
+    {
+        $chasis = Chasis::find($id);
+        if ($chasis)
+        {
+            $chasis->fondo = \Storage::url($chasis->fondo);
+            $chasis->chasis = \Storage::url($chasis->chasis);
+            return $chasis;
+        } else {
+            return response([],404);
+        }
+    }
+
+    public function all()
+    {
+        $chasis = Chasis::all();
+        return view('chasis.index',compact('chasis'));
+    }
     /**
      * Display a listing of the resource.
      *
@@ -25,16 +50,6 @@ class ChasisController extends Controller
     public function index()
     {
         return view('chasis.form');
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
     }
 
     /**
@@ -56,8 +71,8 @@ class ChasisController extends Controller
             'ruedasize' => 'required|integer',
         ]);
 
-        $pathFondo = $request->fondo->store('images');
-        $pathChasis = $request->chasis->store('images');
+        $pathFondo = $request->fondo->store('public/images');
+        $pathChasis = $request->chasis->store('public/images');
         $chasis = new Chasis;
         $chasis->nombre = $request->nombre;
         $chasis->fondo = $pathFondo;
@@ -68,6 +83,8 @@ class ChasisController extends Controller
         $chasis->rueda2y = $request->rueda2y;
         $chasis->ruedasize = $request->ruedasize;
         $chasis->save();
+
+        $request->session()->flash('success', true);
 
         return view('chasis.form');
 
@@ -81,30 +98,7 @@ class ChasisController extends Controller
      */
     public function show(Chasis $chasis)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Chasis  $chasis
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Chasis $chasis)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Chasis  $chasis
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Chasis $chasis)
-    {
-        //
+        return view('chasis.show', compact('chasis'));
     }
 
     /**
@@ -113,8 +107,15 @@ class ChasisController extends Controller
      * @param  \App\Chasis  $chasis
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chasis $chasis)
+    public function destroy($id)
     {
-        //
+        $chasis = Chasis::findOrFail($id);
+        try {
+            $chasis->delete();
+            Session::flash('success', true);
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::flash('failed', true);
+        }
+        return redirect()->route('chasis.admin.all');
     }
 }

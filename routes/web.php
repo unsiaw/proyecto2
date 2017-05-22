@@ -13,30 +13,46 @@
 
 Route::get('/', function () {
     return view('home');
-})->name('inicio');
+})->name('global.inicio');
 
 Route::get('/readme', function () {
     return view('readme');
-})->name('readme');
+})->name('global.readme');
 
-Route::get('/chasis/json','ChasisController@json');
-Route::get('/tazas/json','TazasController@json');
+Route::get('/chasis/json','ChasisController@json')->name('chasis.json');
+Route::get('/chasis/json/{id}','ChasisController@jsonId')->name('chasis.json.id');
+Route::get('/tazas/json','TazasController@json')->name('tazas.json');
+Route::get('/tazas/json/{id}','TazasController@jsonId')->name('tazas.json.id');
 
-Route::get('/tazas/create','TazasController@index')->name('upload.taza');
+Route::get('/tazas/create','TazasController@index')->name('tazas.admin.create');
 Route::post('/tazas/create','TazasController@store');
+Route::get('/tazas/all', 'TazasController@all')->name('tazas.admin.all');
 
-Route::get('/chasis/create','ChasisController@index')->name('upload.chasis');
+Route::get('/chasis/create','ChasisController@index')->name('chasis.admin.create');
 Route::post('/chasis/create','ChasisController@store');
+Route::get('/chasis/all', 'ChasisController@all')->name('chasis.admin.all');
 
-Route::get('/autos/create','AutosController@crearAuto')->name('upload.auto');
-Route::post('/autos/create','AutosController@store');
-Route::get('/autos/all','AutosController@index')->name('autos.todos');
-// Dejar esta ruta para lo ultimo. EL ORDEN DE LAS RUTAS IMPORTA!
-Route::get('/autos/{auto}','AutosController@show')->name('autos.uno');
+Route::get('/autos/mine', 'AutosUserController@index')->name('autos.user.all')->middleware('auth');
+Route::get('/autos/create','AutosUserController@create')->name('autos.user.create');
+Route::post('/autos/create','AutosUserController@store');
+Route::get('/autos/all','AutosAdminController@index')->name('autos.admin.all')->middleware('admin');
+
+Route::get('/autos/share/{token}','AutosUserController@shared')->name('autos.share');
+
+Route::delete('/tazas/delete/{id}', 'TazasController@destroy')->name('tazas.destroy');
+Route::delete('/autos/delete/{id}', 'AutosUserController@destroy')->name('autos.destroy');
+Route::delete('/autos/admin/delete/{id}', 'AutosAdminController@destroy')->name('autos.admin.destroy');
+Route::delete('/chasis/delete/{id}', 'ChasisController@destroy')->name('chasis.destroy');
+
+// Dejar estas rutas para lo ultimo. EL ORDEN DE LAS RUTAS IMPORTA!
+Route::get('/autos/{auto}','AutosUserController@show')->name('autos.uno');
+Route::get('/tazas/{tazas}','TazasController@show')->name('tazas.uno');
+Route::get('/chasis/{chasis}','ChasisController@show')->name('chasis.uno');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/cambiarTheme', 'HomeController@cambiarTheme')->name('theme.cambiar');
 
 Route::get('/redirect/{provider}', 'SocialAuthController@redirect');
 Route::get('/callback/{provider}', 'SocialAuthController@callback');
