@@ -92,7 +92,6 @@
             canvas.setWidth(miContenedor.offsetWidth);
             canvas.setHeight(miContenedor.offsetHeight * 1.7);
 
-            cargarTheme();
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -115,7 +114,6 @@
                             jsonTazas = data;
                             console.log(jsonChasis);
                             iniciarAuto();
-//mostrarPizzas(ordenarPizzas(data));
 }
 });
                 }
