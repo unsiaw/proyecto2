@@ -1,7 +1,11 @@
    <!-- Bootstrap -->
     <link href="{{ URL::to('/css/bootstrap.css') }}" rel="stylesheet">
     <!-- Theme elegido -->
-    <link href="{{ URL::to('/css/bootstrap-theme.min.css') }}" id="theme" rel="stylesheet">
+    @if (session()->has('theme'))
+        <link href="{{ URL::to(session()->get('theme')) }}" id="theme" rel="stylesheet">
+    @else
+        <link href="{{ URL::to('/css/bootstrap-theme.min.css') }}" id="theme" rel="stylesheet">
+    @endif
     <!-- Estilos propios -->
     <link href="{{ URL::to('/css/custom.css') }}" rel="stylesheet">
     <!-- Estilos Social-Connect -->

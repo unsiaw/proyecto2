@@ -59,7 +59,7 @@ function pintarAuto(auto) {
 }
 
 
-/* Themes propios y guardando el theme elegido */
+/* Themes propios y guardando el theme elegido
 function cargarTheme() {
     var themeElegido = localStorage.getItem("theme");
     if ((themeElegido === undefined) || (themeElegido === null)) {
@@ -73,7 +73,7 @@ function cambiarTheme(theme) {
     document.getElementById('theme').href = theme;
     localStorage.setItem("theme", theme);
 }
-
+*/
 
 function cambiarColorVista(color) {
     document.getElementById('blend-color').value = color;
