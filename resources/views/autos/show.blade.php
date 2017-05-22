@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-xs-12 col-sm-6 col-md-8 col-md-8 well">
-            <div class="hidden-xs"><h2>Vista del auto</h2></div>
+            <div class="hidden-xs"><h3>Vista del auto</h3></div>
             <div id="miContenedor" class="col-xs-12 full-width well">
                 <canvas id="imagenAuto"></canvas>
             </div>
@@ -17,12 +17,12 @@
                 <input type="text" id="ruta" class="form-control" value="{{route('autos.share',$auto->token)}}" readonly>
                 <span class="input-group-addon btn btn-primary alert-info" id="visible-button" title="Copiar Link"><i class="glyphicon glyphicon-copy"  onclick="copyToClipboard('#ruta')" aria-hidden="true"></i></span>
             </div>
-            <div class="col-md-8"><h3><br>Datos del auto</h3>
+            <div class="col-md-9"><h3><br>Datos del auto</h3>
                 <ul class="list-group">
-                    <li class="list-group-item"><h4>ID: {{ $auto->id }}</h4></li>
-                    <li class="list-group-item"><h4>Chasis ID: {{ $auto->chasis_id }}</h4></li>
-                    <li class="list-group-item"><h4>Taza ID: {{ $auto->tazas_id }}</h4></li>
-                    <li class="list-group-item"><h4>Color: {{ $auto->color }}</h4></li>
+                    <li class="list-group-item"><h5>ID: {{ $auto->id }}</h5></li>
+                    <li class="list-group-item"><h5>Chasis ID: {{ $auto->chasis_id }}</h5></li>
+                    <li class="list-group-item"><h5>Taza ID: {{ $auto->tazas_id }}</h5></li>
+                    <li class="list-group-item"><h5>Color: {{ $auto->color }}</h5></li>
                 </ul>
             </div>
         </div>
