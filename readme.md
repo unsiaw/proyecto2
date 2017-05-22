@@ -43,7 +43,7 @@ php artisan key:generate
 Migrar la base de datos y cargar algunos datos iniciales
 ```
 php artisan migrate
-php artisan db:generate
+php artisan db:seed
 ```
 
 De ser necesario, crear un link simbólico de la carpeta public a storage con el siguiente comando
