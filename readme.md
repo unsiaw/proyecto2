@@ -2,7 +2,7 @@
 
 # Instalación y uso
 
-## Paso 2
+## Paso 1
 
 ### Con GIT
 ```
