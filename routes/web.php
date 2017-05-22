@@ -52,6 +52,7 @@ Route::get('/chasis/{chasis}','ChasisController@show')->name('chasis.uno');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/cambiarTheme', 'HomeController@cambiarTheme')->name('theme.cambiar');
 
 Route::get('/redirect/{provider}', 'SocialAuthController@redirect');
 Route::get('/callback/{provider}', 'SocialAuthController@callback');

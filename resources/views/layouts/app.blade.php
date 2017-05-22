@@ -15,7 +15,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="img/favicon.ico" />
+    <link rel="icon" type="image/png" href="{{ URL::to('img/favicon.ico') }}" />
 
     <title>{{ config('app_name', 'UNS IAW') }}</title>
 
@@ -54,8 +54,23 @@
     <script src="{{ URL::to('js/controlador.js') }}"></script>
     <script>
         $( document ).ready(function() {
-            cargarTheme();
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
         });
+
+        function cambiarTheme(theme) {
+            $.ajax({
+                url: "{{ route('theme.cambiar') }}",
+                method: "POST",
+                data: {theme: theme},
+                success: function (data) {
+                    window.location.reload();
+                }
+            });
+        }
     </script>
     @yield('scripts')
 
