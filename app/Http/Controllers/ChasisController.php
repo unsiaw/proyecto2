@@ -110,8 +110,12 @@ class ChasisController extends Controller
     public function destroy($id)
     {
         $chasis = Chasis::findOrFail($id);
-        $chasis->delete();
-        Session::flash('success', true);
+        try {
+            $chasis->delete();
+            Session::flash('success', true);
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::flash('failed', true);
+        }
         return redirect()->route('chasis.admin.all');
     }
 }

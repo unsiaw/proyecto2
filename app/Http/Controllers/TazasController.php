@@ -94,8 +94,12 @@ class TazasController extends Controller
     public function destroy($id)
     {
         $taza = Tazas::findOrFail($id);
-        $taza->delete();
-        Session::flash('success', true);
+        try {
+            $taza->delete();
+            Session::flash('success', true);
+        } catch (\Illuminate\Database\QueryException $e) {
+            Session::flash('failed', true);
+        }
         return redirect()->route('tazas.admin.all');
     }
 }

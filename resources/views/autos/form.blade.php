@@ -143,17 +143,15 @@
                     $("#ocultar2").hide();
                     $("#ajaxResponse").append("<div class=\"alert alert-success\" role=\"alert\"><button class=\"close\" data-dismiss=\"alert\">×</button>"+msg.msg+"</div>");
                     $("#ajaxResponse").append("<div class=\"\"><h4>Link público para compartir: </h4><div class=\"input-group\"><input type=\"text\" id=\"ruta\" class=\"form-control\" value=\""+msg.token+"\" readonly><span class=\"input-group-addon btn btn-primary alert-info\" id=\"visible-button\" title=\"Copiar Link\"><i class=\"glyphicon glyphicon-copy\"  onclick=\"copyToClipboard('#ruta')\" aria-hidden=\"true\"></i></span></div></div>");
+                    var script = document.createElement('script');
+                    script.type = "text/javascript";
+                    script.text = "document.querySelector(\"#visible-button\").onclick = function() {";
+                    script.text += "document.querySelector(\"#ruta\").select();";
+                    script.text += "document.execCommand('copy');};";
+                    $("#ajaxResponse").append(script);
                 }
             });
         });
     </script>
-    <script>
-// Copy to clipboard example
-document.querySelector("#visible-button").onclick = function() {
-// Select the content
-document.querySelector("#ruta").select();
-// Copy to the clipboard
-document.execCommand('copy');
-};
-</script>
+
 @endsection
