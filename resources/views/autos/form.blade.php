@@ -11,7 +11,7 @@
         </div>
         <div class="col-xs-10 col-sm-6 col-md-4">
             <div class="col-md-12 text-center">
-                <div class="hidden-xs"><h2>Opciones</h2></div>
+                <div class="hidden-xs"><h3>Opciones</h3></div>
                 <div class="row">
                     <ul class="nav nav-pills nav-stacked">
                         <li role="presentation">
@@ -139,7 +139,7 @@
                     $("#hidear").hide();
                     $("#ocultar1").hide();
                     $("#ocultar2").hide();
-                    $("#ajaxResponse").append("<br><div class=\"alert alert-success\" role=\"alert\"><button class=\"close\" data-dismiss=\"alert\">×</button>"+msg.msg+"</div>");
+                    $("#ajaxResponse").append("<br><div class=\"panel alert alert-success\" role=\"alert\"><button class=\"close\" data-dismiss=\"alert\"></button>"+msg.msg+"</div>");
                     $("#ajaxResponse").append("<div class=\"\"><h4>Link público para compartir: </h4><div class=\"input-group\"><input type=\"text\" id=\"ruta\" class=\"form-control\" value=\""+msg.token+"\" readonly><span class=\"input-group-addon btn btn-primary alert-info\" id=\"visible-button\" title=\"Copiar Link\"><i class=\"glyphicon glyphicon-copy\"  onclick=\"copyToClipboard('#ruta')\" aria-hidden=\"true\"></i></span></div><br><a class=\"btn btn-primary btn-lg btn-block\" href=\""+msg.volver+"\">Crear otro auto </a></div>");
                     var script = document.createElement('script');
                     script.type = "text/javascript";
